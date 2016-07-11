@@ -31,6 +31,7 @@ import org.opencv.highgui.Highgui;
 import org.opencv.highgui.VideoCapture;
 import org.opencv.imgproc.Imgproc;
 import org.opencv.objdetect.CascadeClassifier;
+
 import org.opencv.video.BackgroundSubtractorMOG;
 
 public class MainFrame extends javax.swing.JFrame {
@@ -110,6 +111,7 @@ public class MainFrame extends javax.swing.JFrame {
 
             video1 = new VideoCapture(sourcen1);
             video2 = new VideoCapture(sourcen2);
+            
 
             if (video1.isOpened()) {
                 camUno = new CamUno();
@@ -127,7 +129,7 @@ public class MainFrame extends javax.swing.JFrame {
     }
 
     private void stop() {
-        //System.out.println("You clicked the stop button!");
+        System.out.println("Presionaste el boton de iniciar!");
 
         if (empezar) {
             try {
