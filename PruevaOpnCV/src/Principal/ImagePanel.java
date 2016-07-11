@@ -1,4 +1,4 @@
-package javaopencv;
+package Principal;
 
 import java.awt.Color;
 import java.awt.Dimension;
