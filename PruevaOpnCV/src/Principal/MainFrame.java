@@ -87,8 +87,8 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel3.setText("Sensibilidad:");
         jCheckBoxAlarm.setText("Alerta");
         jLabel2.setText("Zero para Webcam local");
-        imagen1 = new ImagePanel(new ImageIcon("figs/320x240.gif").getImage());
-        imagen2 = new ImagePanel(new ImageIcon("figs/320x240.gif").getImage());
+        imagen1 = new ImagePanel(new ImageIcon("images/320x240.gif").getImage());
+        imagen2 = new ImagePanel(new ImageIcon("images/320x240.gif").getImage());
         jPanelSource1.add(imagen1, BorderLayout.CENTER);
         jPanelSource2.add(imagen2, BorderLayout.CENTER);
         this.setTitle("Pueva OpenCV");
@@ -182,6 +182,7 @@ public class MainFrame extends javax.swing.JFrame {
         public void run() {
             try {
                 final URI xmlUri = getClass().getResource("/Patrones/haarcascade_frontalface_alt.xml").toURI();
+                //final URI xmlUri = getClass().getResource("/Patrones/lbpcascade_frontalface.xml").toURI();
                 //System.out.println(getClass().getResource("/lbpcascade_frontalface.xml"));
                 final CascadeClassifier faceDetector = new CascadeClassifier(new File(xmlUri).getAbsolutePath());
                 if (video1.isOpened()) {
@@ -205,7 +206,7 @@ public class MainFrame extends javax.swing.JFrame {
                             }
                             if (jCheckBoxSave.isSelected()) {
                                 if (retardo == 2) {
-                                    String filename = jTextFieldSaveLocation.getText() + File.separator + "capture_" + getCurrentTimeStamp() + ".jpg";
+                                    String filename = jTextFieldSaveLocation.getText() + File.separator + "Cap_CamUno_" + getCurrentTimeStamp() + ".jpg";
                                     System.out.println("Saving results in: " + filename);
                                     Highgui.imwrite(filename, frameProcesado1);
                                     retardo = 0;
@@ -256,14 +257,14 @@ public class MainFrame extends javax.swing.JFrame {
                                 //System.out.println(detections);
                                 if (detections >= sensibility) {
                                     //System.out.println("ALARM ENABLED!");
-                                    Core.putText(frameActual1, "MOTION DETECTED",
+                                    Core.putText(frameActual1, "MOVIMIENTO DETECTADO",
                                             new Point(5, frameActual1.cols() / 2), //frameActual.rows()/2 frameActual.cols()/2
                                             Core.FONT_HERSHEY_TRIPLEX, new Double(1), new Scalar(0, 0, 255));
 
                                     if (jCheckBoxSave.isSelected()) {
                                         if (retardo == 1000) {
-                                            String filename = jTextFieldSaveLocation.getText() + File.separator + "capture_" + getCurrentTimeStamp() + ".jpg";
-                                            System.out.println("Saving results in: " + filename);
+                                            String filename = jTextFieldSaveLocation.getText() + File.separator + "Cap_CamUno_" + getCurrentTimeStamp() + ".jpg";
+                                            System.out.println("Guardando resultados en: " + filename);
                                             Highgui.imwrite(filename, frameProcesado1);
                                             retardo = 0;
                                         } else {
@@ -313,6 +314,7 @@ public class MainFrame extends javax.swing.JFrame {
         public void run() {
             try {
                 final URI xmlUri = getClass().getResource("/Patrones/haarcascade_frontalface_alt.xml").toURI();
+                //final URI xmlUri = getClass().getResource("/Patrones/lbpcascade_frontalface.xml").toURI();
                 //System.out.println(getClass().getResource("/lbpcascade_frontalface.xml"));
                 final CascadeClassifier faceDetector = new CascadeClassifier(new File(xmlUri).getAbsolutePath());
                 if (video2.isOpened()) {
@@ -336,7 +338,7 @@ public class MainFrame extends javax.swing.JFrame {
                             }
                             if (jCheckBoxSave.isSelected()) {
                                 if (retardo == 2) {
-                                    String filename = jTextFieldSaveLocation.getText() + File.separator + "capture_" + getCurrentTimeStamp() + ".jpg";
+                                    String filename = jTextFieldSaveLocation.getText() + File.separator + "Cap_CamDos_" + getCurrentTimeStamp() + ".jpg";
                                     System.out.println("Saving results in: " + filename);
                                     Highgui.imwrite(filename, frameProcesado2);
                                     retardo = 0;
@@ -387,14 +389,14 @@ public class MainFrame extends javax.swing.JFrame {
                                 //System.out.println(detections);
                                 if (detections >= sensibility) {
                                     //System.out.println("ALARM ENABLED!");
-                                    Core.putText(frameActual2, "MOTION DETECTED",
+                                    Core.putText(frameActual2, "MOVIMIENTO DETECTADO",
                                             new Point(5, frameActual2.cols() / 2), //frameActual.rows()/2 frameActual.cols()/2
                                             Core.FONT_HERSHEY_TRIPLEX, new Double(1), new Scalar(0, 0, 255));
 
                                     if (jCheckBoxSave.isSelected()) {
                                         if (retardo == 1000) {
-                                            String filename = jTextFieldSaveLocation.getText() + File.separator + "capture_" + getCurrentTimeStamp() + ".jpg";
-                                            System.out.println("Saving results in: " + filename);
+                                            String filename = jTextFieldSaveLocation.getText() + File.separator + "Cap_CamDos_" + getCurrentTimeStamp() + ".jpg";
+                                            System.out.println("Guardando resultados en: " + filename);
                                             Highgui.imwrite(filename, frameProcesado2);
                                             retardo = 0;
                                         } else {
